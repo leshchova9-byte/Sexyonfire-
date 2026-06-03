@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sexy on Fire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire: #C0152A;
+    --ember: #E01E37;
+    --gold: #C9902A;
+    --cream: #FAF3E8;
+    --dark: #0F0A06;
+    --warm-dark: #1A100A;
+    --text: #2A1A0F;
+    --muted: #7A5C48;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 20px;
+    background: radial-gradient(ellipse at 50% 60%, #3D0810 0%, #1A0408 40%, var(--dark) 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(192,21,42,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,144,42,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 120px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title span {
+    display: block;
+    font-style: italic;
+    color: var(--fire);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250,243,232,0.7);
+    margin-top: 24px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+    max-width: 560px;
+  }
+
+  .hero-cta {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 18px 48px;
+    background: var(--fire);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ember);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .hero-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .hero-price strong {
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  .flame-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to top, var(--fire), transparent);
+    opacity: 0.6;
+  }
+
+  /* PAIN SECTION */
+  .pain {
+    background: var(--dark);
+    padding: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .pain-intro {
+    color: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .pain-intro em {
+    font-style: italic;
+    color: var(--fire);
+  }
+
+  .pain-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: rgba(250,243,232,0.88);
+    font-style: italic;
+    margin-bottom: 60px;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: grid;
+    gap: 0;
+    text-align: left;
+    border: 1px solid rgba(201,144,42,0.2);
+  }
+
+  .pain-list li {
+    padding: 20px 28px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(250,243,232,0.95);
+    border-bottom: 1px solid rgba(201,144,42,0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-list li:hover { background: rgba(192,21,42,0.05); }
+
+  .pain-list li::before {
+    content: '—';
+    color: var(--fire);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* BRIDGE */
+  .bridge {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--dark) 0%, #1A0408 50%, var(--dark) 100%);
+  }
+
+  .bridge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: rgba(250,243,232,0.85);
+  }
+
+  .bridge-text strong {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .bridge-accent {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-style: italic;
+    color: var(--fire);
+    margin: 20px 0;
+    line-height: 1;
+  }
+
+  /* PROMISE */
+  .promise {
+    background: var(--dark);
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .promise-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .promise-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: rgba(201,144,42,0.2);
+  }
+
+  .promise-card {
+    background: var(--dark);
+    padding: 40px 32px;
+    transition: background 0.3s;
+  }
+
+  .promise-card:hover { background: #180408; }
+
+  .promise-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-style: italic;
+    color: rgba(192,21,42,0.3);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .promise-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--cream);
+  }
+
+  .promise-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(250,243,232,0.88);
+  }
+
+  /* PROGRAM */
+  .program {
+    padding: 100px 20px;
+    background: var(--warm-dark);
+    position: relative;
+  }
+
+  .program::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .program-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .program-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .program-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+  }
+
+  .program-days {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .day-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    background: rgba(250,243,232,0.06);
+    border: 1px solid rgba(201,144,42,0.15);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .day-item:hover {
+    border-color: rgba(192,21,42,0.4);
+    background: rgba(192,21,42,0.05);
+  }
+
+  .day-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    border-right: 1px solid rgba(201,144,42,0.15);
+  }
+
+  .day-num span:first-child {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .day-num span:last-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--fire);
+    line-height: 1;
+  }
+
+  .day-content {
+    padding: 24px 28px;
+  }
+
+  .day-theme {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .day-desc {
+    font-size: 13px;
+    color: rgba(250,243,232,0.85);
+    line-height: 1.6;
+  }
+
+  /* WHAT'S INSIDE */
+  .inside {
+    background: var(--dark);
+    padding: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .inside-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .inside-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(250,243,232,0.88);
+    margin-bottom: 60px;
+  }
+
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(201,144,42,0.15);
+    text-align: left;
+  }
+
+  @media (max-width: 560px) {
+    .blocks-grid { grid-template-columns: 1fr; }
+  }
+
+  .block-card {
+    background: var(--dark);
+    padding: 36px 28px;
+  }
+
+  .block-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .block-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .block-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(250,243,232,0.85);
+  }
+
+  /* TRANSFORMATION */
+  .transform {
+    padding: 100px 20px;
+    background: var(--warm-dark);
+    position: relative;
+  }
+
+  .transform::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--fire), transparent);
+  }
+
+  .transform-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .transform-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 60px;
+  }
+
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  @media (max-width: 600px) {
+    .transform-grid {
+      grid-template-columns: 1fr;
+    }
+    .transform-arrow { display: none; }
+  }
+
+  .transform-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .transform-item {
+    padding: 20px 24px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .transform-before .transform-item {
+    background: rgba(250,243,232,0.07);
+    color: rgba(250,243,232,0.82);
+    border-left: 2px solid rgba(250,243,232,0.1);
+  }
+
+  .transform-after .transform-item {
+    background: rgba(192,21,42,0.08);
+    color: rgba(250,243,232,0.9);
+    border-right: 2px solid var(--fire);
+    text-align: right;
+  }
+
+  .transform-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    color: var(--fire);
+    font-size: 20px;
+  }
+
+  .col-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .col-label-after { color: var(--gold); text-align: right; }
+
+  /* AUTHOR */
+  .author {
+    background: var(--dark);
+    padding: 100px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .author-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .author-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  .author-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.8;
+    color: rgba(250,243,232,0.92);
+    font-style: italic;
+  }
+
+  .author-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(192,21,42,0.2);
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    .author-stats { grid-template-columns: 1fr; }
+  }
+
+  .stat-item {
+    background: var(--dark);
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-style: italic;
+    color: var(--fire);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(250,243,232,0.85);
+    line-height: 1.5;
+  }
+
+  .author-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--fire);
+    margin: 40px auto;
+  }
+
+  /* FREE MARATHON */
+  .marathon {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1A0408 0%, #0F0A06 100%);
+    border-top: 1px solid rgba(201,144,42,0.2);
+    border-bottom: 1px solid rgba(201,144,42,0.2);
+  }
+
+  .marathon-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .marathon-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .marathon-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .marathon-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(250,243,232,0.65);
+    margin-bottom: 40px;
+  }
+
+  .marathon-days {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(201,144,42,0.15);
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    .marathon-days { grid-template-columns: 1fr; }
+  }
+
+  .marathon-day {
+    background: var(--dark);
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .marathon-day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-style: italic;
+    color: var(--fire);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .marathon-day-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .marathon-day-desc {
+    font-size: 12px;
+    color: rgba(250,243,232,0.95);
+    line-height: 1.5;
+  }
+
+  /* ONLINE ADVANTAGE */
+  .online-adv {
+    padding: 100px 20px;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,144,42,0.15);
+  }
+
+  .online-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .online-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 56px;
+    line-height: 1.2;
+  }
+
+  .online-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(192,21,42,0.15);
+    text-align: left;
+  }
+
+  @media (max-width: 560px) {
+    .online-grid { grid-template-columns: 1fr; }
+  }
+
+  .online-card {
+    background: var(--dark);
+    padding: 36px 28px;
+  }
+
+  .online-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .online-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--cream);
+  }
+
+  .online-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(250,243,232,0.85);
+  }
+
+  /* PRICING */
+  .pricing {
+    background: var(--dark);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(192,21,42,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pricing-inner {
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pricing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 48px;
+  }
+
+  .price-box {
+    border: 1px solid rgba(201,144,42,0.4);
+    padding: 56px 40px;
+    position: relative;
+    background: rgba(250,243,232,0.02);
+  }
+
+  .price-box::before {
+    content: '✦';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark);
+    padding: 0 12px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-currency {
+    font-size: 32px;
+    color: var(--gold);
+    vertical-align: super;
+    font-weight: 300;
+  }
+
+  .price-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .price-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .price-includes li {
+    font-size: 14px;
+    color: rgba(250,243,232,0.92);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .price-includes li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .pricing-note {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--dark);
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--dark) 0%, #1A0408 100%);
+    position: relative;
+  }
+
+  .final-cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--fire), transparent);
+  }
+
+  .final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 80px);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .final-title span { color: var(--fire); }
+
+  .final-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(250,243,232,0.88);
+    margin-bottom: 48px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(250,243,232,0.06);
+  }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(250,243,232,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">7-дневный курс пробуждения женской энергии</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.5vw,20px);letter-spacing:6px;text-transform:uppercase;color:rgba(250,243,232,0.7);margin-bottom:16px;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;">Сексуальная · Пластичная · Женственная</p>
+  <h1 class="hero-title">
+    Sexy
+    <span>on Fire</span>
+  </h1>
+  <p class="hero-subtitle">Танец · Практики · Медитации — семь дней комплексной работы над женственностью, после которых у тебя нет шансов остаться прежней.</p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn-primary"><span>Войти в курс</span></a>
+    <p class="hero-price">Стоимость — <strong>99 EUR</strong></p>
+  </div>
+  <div class="flame-decoration"></div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <span class="section-label reveal">Это про тебя?</span>
+  <h2 class="pain-intro reveal">Если хотя бы один пункт<br><em>про тебя</em> — ты здесь не случайно</h2>
+  <p class="pain-sub reveal">Узнай себя в этом списке</p>
+  <ul class="pain-list reveal">
+    <li>Смотришь в зеркало и не видишь в себе женственности</li>
+    <li>Чувствуешь себя зажатой и скованной в теле</li>
+    <li>Стесняешься двигаться — кажется, выгляжу нелепо</li>
+    <li>Давно не ощущала себя сексуальной и желанной</li>
+    <li>Живёшь в голове — в стрессе, в списках, в делах</li>
+    <li>Тело как будто чужое — не слышишь его, не чувствуешь</li>
+    <li>Энергии нет — усталость стала нормой</li>
+    <li>Смотришь на других женщин, которые двигаются свободно, и думаешь «это не про меня»</li>
+    <li>Хочется лёгкости и радости — но непонятно, где это взять</li>
+    <li>Забыла, когда последний раз делала что-то только для себя</li>
+    <li>Либидо упало — нет желания, нет искры, нет интереса к себе как к женщине</li>
+    <li>Тяжело проявляться в мир — хочется быть замеченной, но что-то останавливает</li>
+    <li>Потеряла контакт с собой — не понимаешь чего хочешь и кто ты есть</li>
+    <li>Всегда хотела попробовать себя в латине — но так и не решилась</li>
+  </ul>
+</section>
+
+<div class="divider reveal"></div>
+
+<!-- BRIDGE -->
+<section class="bridge">
+  <p class="bridge-text reveal">
+    Это не про тело. Это про контакт с собой.<br><br>
+    <strong>Самба — это не про танец.</strong>
+    <span class="bridge-accent">Это про возвращение.</span>
+    К своей женственности, своей энергии, своей лёгкости.
+  </p>
+</section>
+
+<div class="divider reveal"></div>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="promise-header reveal">
+    <span class="section-label">За 7 дней ты почувствуешь</span>
+    <h2 class="promise-title">Четыре изменения,<br>которые остаются навсегда</h2>
+  </div>
+  <div class="promise-grid reveal">
+    <div class="promise-card">
+      <div class="promise-number">01</div>
+      <h3>Тело — твоё</h3>
+      <p>Ты перестанешь жить только в голове и начнёшь чувствовать своё тело как источник силы и удовольствия</p>
+    </div>
+    <div class="promise-card">
+      <div class="promise-number">02</div>
+      <h3>Движение — свободное</h3>
+      <p>Ты перестанешь стесняться двигаться. Научишься танцевать легко, женственно, с кайфом — без страха выглядеть нелепо</p>
+    </div>
+    <div class="promise-card">
+      <div class="promise-number">03</div>
+      <h3>Энергия — живая</h3>
+      <p>Ты почувствуешь ту самую женскую энергию — лёгкость, притяжение, радость без причины</p>
+    </div>
+    <div class="promise-card">
+      <div class="promise-number">04</div>
+      <h3>Ты — другая</h3>
+      <p>Не снаружи. Внутри. Ты начнёшь нравиться себе в зеркале. Ощущать себя желанной и живой</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program">
+  <div class="program-inner">
+    <div class="program-header reveal">
+      <span class="section-label">Программа</span>
+      <h2 class="program-title">7 дней — 7 слоёв<br>трансформации</h2>
+    </div>
+    <div class="program-days">
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>1</span></div>
+        <div class="day-content">
+          <p class="day-theme">Возвращение</p>
+          <h3 class="day-title">Я возвращаюсь в тело</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>2</span></div>
+        <div class="day-content">
+          <p class="day-theme">Поток</p>
+          <h3 class="day-title">Мягкость — это сила</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>3</span></div>
+        <div class="day-content">
+          <p class="day-theme">Огонь</p>
+          <h3 class="day-title">Сексуальность без стыда</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>4</span></div>
+        <div class="day-content">
+          <p class="day-theme">Магнетизм</p>
+          <h3 class="day-title">Уверенность и притяжение</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>5</span></div>
+        <div class="day-content">
+          <p class="day-theme">Яркость</p>
+          <h3 class="day-title">Внутренний огонь</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>6</span></div>
+        <div class="day-content">
+          <p class="day-theme">Принятие</p>
+          <h3 class="day-title">Любовь к себе через тело</h3>
+        </div>
+      </div>
+      <div class="day-item reveal">
+        <div class="day-num"><span>День</span><span>7</span></div>
+        <div class="day-content">
+          <p class="day-theme">Интеграция</p>
+          <h3 class="day-title">Я начинаюсь</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside">
+  <span class="section-label reveal">Формат</span>
+  <h2 class="inside-title reveal">Что внутри каждого дня</h2>
+  <p class="inside-sub reveal">4 блока — глубоко, насыщенно, без воды</p>
+  <div class="blocks-grid reveal">
+    <div class="block-card">
+      <span class="block-icon">🎙️</span>
+      <h3>Подкаст</h3>
+      <p>Разговор по душам. Мой личный опыт — честно, без сценария</p>
+    </div>
+    <div class="block-card">
+      <span class="block-icon">🔥</span>
+      <h3>Танцевальный урок</h3>
+      <p>7 уроков от sensual flow до самбы. Длительность каждого — 25–30 минут</p>
+    </div>
+    <div class="block-card">
+      <span class="block-icon">🌊</span>
+      <h3>Практика</h3>
+      <p>Даосские техники, аффирмации через тело, работа с энергией. Авторский метод. 15–20 минут</p>
+    </div>
+    <div class="block-card">
+      <span class="block-icon">🌙</span>
+      <h3>Медитация</h3>
+      <p>Медитации на возвращение в себя и свою женскую энергию</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transform">
+  <div class="transform-inner">
+    <h2 class="transform-title reveal">До и после</h2>
+    <div class="transform-grid reveal">
+      <div class="transform-col transform-before">
+        <span class="col-label">До курса</span>
+        <div class="transform-item">Живёт в голове, тело — фон</div>
+        <div class="transform-item">Зажата, стесняется двигаться</div>
+        <div class="transform-item">Стыдится своей сексуальности</div>
+        <div class="transform-item">Нет энергии и радости</div>
+        <div class="transform-item">Не видит себя красивой</div>
+      </div>
+      <div class="transform-arrow">→</div>
+      <div class="transform-col transform-after">
+        <span class="col-label col-label-after">После курса</span>
+        <div class="transform-item">Чувствует тело как источник силы</div>
+        <div class="transform-item">Двигается свободно, с кайфом</div>
+        <div class="transform-item">Принимает свою женскую природу</div>
+        <div class="transform-item">Есть утренний ритуал и энергия</div>
+        <div class="transform-item">Нравится себе в зеркале</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author">
+  <span class="section-label reveal">Автор курса</span>
+  <h2 class="author-name reveal">Елизавета Мирзаханян</h2>
+  <p class="author-title reveal">Танцовщица · Женский наставник · Счастливая жена и мама</p>
+  <div class="author-divider reveal"></div>
+  <div class="author-stats reveal">
+    <div class="stat-item">
+      <span class="stat-num">19</span>
+      <span class="stat-label">лет в профессиональных<br>бальных танцах</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">девушек научила танцевать<br>с нуля онлайн и офлайн</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">7+</span>
+      <span class="stat-label">лет в практике<br>духовности и энергетики</span>
+    </div>
+  </div>
+  <div class="author-divider reveal"></div>
+  <p class="author-text reveal">
+    Я танцую профессионально с детства — бальные танцы стали моей жизнью. У меня была своя танцевальная студия, где я научила двигаться сотни девушек.<br><br>
+    Параллельно с танцем я глубоко погружена в духовные практики — тета-хилинг, даосские и энергетические техники. Я знаю, как соединить тело и душу в одно целое.<br><br>
+    Этот курс — всё лучшее из двух моих миров. Для тебя.
+  </p>
+</section>
+
+<!-- FREE MARATHON -->
+<section class="marathon">
+  <div class="marathon-inner">
+    <div class="marathon-badge reveal">Бесплатно</div>
+    <h2 class="marathon-title reveal">Начни с 3 бесплатных дней</h2>
+    <p class="marathon-sub reveal">Почувствуй изменение — прежде чем решишь</p>
+    <div class="marathon-days reveal">
+      <div class="marathon-day">
+        <div class="marathon-day-num">1</div>
+        <p class="marathon-day-title">Я чувствую</p>
+        <p class="marathon-day-desc">Танцевальная связка самбы + даосская практика</p>
+      </div>
+      <div class="marathon-day">
+        <div class="marathon-day-num">2</div>
+        <p class="marathon-day-title">Я двигаюсь</p>
+        <p class="marathon-day-desc">Sensual flow — мягкость, пластика, женственность</p>
+      </div>
+      <div class="marathon-day">
+        <div class="marathon-day-num">3</div>
+        <p class="marathon-day-title">Я хочу большего</p>
+        <p class="marathon-day-desc">Танцевальная связка самбы + даосская практика</p>
+      </div>
+    </div>
+    <a href="#" class="btn-primary reveal"><span>Записаться на марафон бесплатно</span></a>
+  </div>
+</section>
+
+<!-- ONLINE ADVANTAGE -->
+<section class="online-adv">
+  <div class="online-inner">
+    <span class="section-label reveal">Почему онлайн</span>
+    <h2 class="online-title reveal">Онлайн — это лучший способ<br>начать танцевать</h2>
+    <div class="online-grid reveal">
+      <div class="online-card">
+        <span class="online-icon">🚪</span>
+        <h3>Только ты и зеркало</h3>
+        <p>Никто не смотрит, никто не оценивает. Ты можешь быть собой — неловкой, смешной, живой</p>
+      </div>
+      <div class="online-card">
+        <span class="online-icon">⏱️</span>
+        <h3>В своём темпе</h3>
+        <p>Поставь на паузу, повтори, пересмотри. Никакой спешки и никакого сравнения с другими</p>
+      </div>
+      <div class="online-card">
+        <span class="online-icon">🗓️</span>
+        <h3>В удобное время</h3>
+        <p>Утром до работы, вечером после детей, в выходной — когда хочешь и сколько хочешь</p>
+      </div>
+      <div class="online-card">
+        <span class="online-icon">🏠</span>
+        <h3>Без дороги</h3>
+        <p>Не нужно ехать через весь город. Открыла телефон — и уже на уроке. Прямо дома</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <h2 class="pricing-title reveal">Войти в курс</h2>
+    <div class="price-box reveal">
+      <div class="price-amount"><span class="price-currency">€</span>99</div>
+      <p class="price-label">Полный доступ · 7 дней</p>
+      <ul class="price-includes">
+        <li>7 подкастов — разговоры по душам каждый день</li>
+        <li>10 танцевальных уроков + 5 связок самбы</li>
+        <li>7 практик — даосские техники и авторский метод</li>
+        <li>7 медитаций — возвращение в себя каждый вечер</li>
+        <li>Закрытый Telegram-канал с поддержкой</li>
+        <li>Доступ к записи после курса</li>
+      </ul>
+      <a href="https://stripe.com" class="btn-primary"><span>Купить курс за €99</span></a>
+    </div>
+    <p class="pricing-note reveal">Первый поток — живой, с автором онлайн.<br>После — курс остаётся в записи.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2 class="final-title reveal">Ты давно<br><span>заслуживаешь</span><br>этого</h2>
+  <p class="final-sub reveal">Времени для себя. Ощущения себя живой. Возвращения домой — в своё тело.</p>
+  <a href="#pricing" class="btn-primary reveal"><span>Я готова 🔥</span></a>
+</section>
+
+<footer>
+  <p>© 2026 · Sexy Огонь Внутри</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
